@@ -21,13 +21,13 @@ export async function getTopRatedMovies() {
   const data = await response.json();
   return data.results;
 }
-export async function getMovieDetails(id) {
+export async function getMovieDetails(id:number) {
   const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
   const data = await response.json();
 
   return data;
 }
-export async function searchmovie(title) {
+export async function searchmovie(title:string) {
   const response = await fetch(
     `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${title}`,
   );
@@ -42,7 +42,7 @@ export async function getCategory() {
   const data = await response.json();
   return data.genres;
 }
-export async function getMoveOfCategory(categoryId) {
+export async function getMoveOfCategory(categoryId:number) {
   const response = await fetch(
     `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en&with_genres=${categoryId}`,
   );

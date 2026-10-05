@@ -5,9 +5,9 @@ import {
   Mail,
   LockKeyholeOpen,
 } from "lucide-react";
-import { AuthContext } from "../context/AuthContext.js";
-import BackButton from "./ButtonBack.js"
-import loginimage from "../assets/login.jpg";
+import { AuthContext } from "../Context/AuthContext.js";
+import BackButton from "./ButtonBack.js";
+// import loginimage from "../assets/login.jpg";
 
 function Login() {
   const [name, setName] = useState("");
@@ -20,8 +20,8 @@ function Login() {
   const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const { login, user, logout } = useContext(AuthContext);
-
-  const handleInputs = (e) => {
+  // FormEvent
+  const handleInputs = (e: any) => {
     e.preventDefault();
 
     if (!name) {
@@ -44,7 +44,7 @@ function Login() {
       return;
     }
 
-     if (!pasword) {
+    if (!pasword) {
       setError("pasword is empty. ");
       return;
     }
@@ -61,7 +61,7 @@ function Login() {
     <section className="h-screen w-full overflow-hidden text-white flex">
       <div className="w-1/2 h-full hidden md:flex relative">
         <img
-          src={loginimage}
+          src="login.jpg"
           className="absolute w-full h-full object-cover object-center inset-0"
           alt="Login"
         />
@@ -71,7 +71,7 @@ function Login() {
       </div>
 
       <div className="w-full md:w-1/2 h-full flex flex-col items-center justify-center bg-[#030E24] gap-5 relative">
-      <div className=" w-fit absolute left-3 top-3 h-5 p-5 flex md:hidden items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-sm text-gray-200 hover:bg-red-600/80 hover:border-red-500 transition duration-300 ">
+        <div className=" w-fit absolute left-3 top-3 h-5 p-5 flex md:hidden items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-sm text-gray-200 hover:bg-red-600/80 hover:border-red-500 transition duration-300 ">
           <BackButton />
         </div>
         <div className="flex justify-center items-center flex-col">

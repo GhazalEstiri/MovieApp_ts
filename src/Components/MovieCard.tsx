@@ -1,5 +1,11 @@
-import { useState } from "react";
-function MovieCard({ movie }) {
+
+interface Movie {
+poster_path:string
+  title:string,
+  vote_average:number
+}
+function MovieCard({ movie }:{movie:Movie}) {
+  console.log(movie)
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   
   return (
