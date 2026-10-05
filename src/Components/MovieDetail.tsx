@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getMovieDetails } from "../Components/MovieAPI";
+import { getMovieDetails } from "./MovieAPI.js";
 import { Heart, Star } from "lucide-react";
-import BackButton from "./ButtonBack";
+import BackButton from "./ButtonBack.js";
 
 function MovieDetail() {
   const { id } = useParams();

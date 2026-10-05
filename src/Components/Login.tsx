@@ -5,8 +5,8 @@ import {
   Mail,
   LockKeyholeOpen,
 } from "lucide-react";
-import { AuthContext } from "../context/AuthContext";
-import BackButton from "./ButtonBack"
+import { AuthContext } from "../context/AuthContext.js";
+import BackButton from "./ButtonBack.js"
 import loginimage from "../assets/login.jpg";
 
 function Login() {

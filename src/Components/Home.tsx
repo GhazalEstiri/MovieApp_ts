@@ -6,8 +6,8 @@ import {
   searchmovie,
   getCategory,
   getMoveOfCategory,
-} from "../Components/MovieAPI";
-import MovieCard from "./MovieCard";
+} from "./MovieAPI.js";
+import MovieCard from "./MovieCard.js";
 import { Link, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";

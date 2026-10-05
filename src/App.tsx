@@ -1,13 +1,13 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Components/Home";
-import MovieCard from "./Components/MovieCard";
-import MovieDetail from "./Components/MovieDetail";
+import Home from "./Components/Home.js";
+import MovieCard from "./Components/MovieCard.js";
+import MovieDetail from "./Components/MovieDetail.js";
 // import Search from "./Components/Search"
-import Category from "./Components/Category";
-import Position from "./Position";
-import Favorite from "./Favotite";
-import Login from "./Components/Login";
+import Category from "./Components/Category.js";
+import Position from "./Position.js";
+import Favorite from "./Favotite.js";
+import Login from "./Components/Login.js";
 
 function App() {
   return (

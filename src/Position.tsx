@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { getPopularMovies, getTrendingMovies, getTopRatedMovies } from "./Components/MovieAPI";
+import { getPopularMovies, getTrendingMovies, getTopRatedMovies } from "./Components/MovieAPI.js";
 import { useParams, Link } from "react-router-dom";
-import MovieCard from "./Components/MovieCard";
-import BackButton from "./Components/ButtonBack";
+import MovieCard from "./Components/MovieCard.js";
+import BackButton from "./Components/ButtonBack.js";
 
 function Position() {
   const { position } = useParams();

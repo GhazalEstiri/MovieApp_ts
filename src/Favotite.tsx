@@ -1,7 +1,7 @@
 import { useState } from "react";
-import MovieCard from "./Components/MovieCard";
+import MovieCard from "./Components/MovieCard.js";
 import { Link } from "react-router-dom";
-import BackButton from "./Components/ButtonBack";
+import BackButton from "./Components/ButtonBack.js";
 
 function Favorite() {
   const [favorites, setFavorites] = useState(() => {
