@@ -5,8 +5,11 @@ import BackButton from "./Components/ButtonBack.js";
 
 function Favorite() {
   const [favorites, setFavorites] = useState(() => {
-    return JSON.parse(localStorage.getItem("favorites")) || [];
+    return JSON.parse(localStorage.getItem("favorites") ?? "[]");
   });
+interface Fave {
+  id:number;
+}
 
   return (
     <div className="text-white px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 lg:py-10">
@@ -21,9 +24,7 @@ function Favorite() {
       </div>
 
       {favorites.length === 0 ? (
-        <h1 className="text-center text-gray-400 text-xl mt-20">
-          No film
-        </h1>
+        <h1 className="text-center text-gray-400 text-xl mt-20">No film</h1>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
           {favorites.map((movie) => {
@@ -44,4 +45,3 @@ function Favorite() {
 }
 
 export default Favorite;
-

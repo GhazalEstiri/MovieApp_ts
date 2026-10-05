@@ -1,16 +1,28 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getMovieDetails } from "./MovieAPI.js";
-import { Heart, Star } from "lucide-react";
+import { Heart, Move, Star } from "lucide-react";
 import BackButton from "./ButtonBack.js";
 
 function MovieDetail() {
   const { id } = useParams();
-
-  const [movie, setMovie] = useState(null);
+  interface Genres {
+    id: number;
+    name: string;
+  }
+  interface Movie {
+    id: number;
+    poster_path: string;
+    title: string;
+    genres: Genres[] ;
+    vote_average: number;
+    release_date: string;
+    overview:string;
+  }
+  const [movie, setMovie] = useState<Movie | null>(null);
   const [isFavorite, setIsFavorite] = useState(() => {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    return favorites.some((item) => item.id === Number(id));
+    const favorites = JSON.parse(localStorage.getItem("favorites") ?? "[]");
+    return favorites.some((item: Movie) => item.id === Number(id));
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -22,7 +34,7 @@ function MovieDetail() {
         setMovie(null);
         setError(false);
 
-        const data = await getMovieDetails(id);
+        const data = await getMovieDetails(Number(id));
         console.log("data:", data);
         setMovie(data);
       } catch (error) {
@@ -37,10 +49,12 @@ function MovieDetail() {
   }, [id]);
 
   const handlrFavorite = () => {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const favorites = JSON.parse(localStorage.getItem("favorites") ?? "[]");
 
     if (isFavorite) {
-      const newFavorite = favorites.filter((item) => item.id !== movie.id);
+      const newFavorite = favorites.filter(
+        (item: Movie) => item.id !== movie?.id,
+      );
       localStorage.setItem("favorites", JSON.stringify(newFavorite));
       setIsFavorite(false);
       console.log(newFavorite);
@@ -51,7 +65,7 @@ function MovieDetail() {
       console.log(newFavorite);
     }
   };
-
+  const genres: Genres[] = movie?.genres ?? [];
   console.log(isFavorite);
 
   return (
@@ -102,7 +116,7 @@ function MovieDetail() {
                   </p>
 
                   <div className="flex flex-wrap gap-2 sm:gap-3">
-                    {movie.genres.map((genre) => (
+                    {genres.map((genre) => (
                       <span
                         key={genre.id}
                         className="px-3 sm:px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-xs sm:text-sm text-gray-200 hover:bg-red-600/80 hover:border-red-500 transition duration-300"
