@@ -13,19 +13,36 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel } from "swiper/modules";
 import "swiper/css";
 import { Clapperboard, Search, Menu, X, CircleUserRound } from "lucide-react";
-import ShutterIdalnd from "../assets/shutteriland.jpg";
+// import ShutterIdalnd from "../assets/shutteriland.jpg";
+interface Category {
+  id: number;
+  name: string;
+}
+interface Movies {
+  id: number;
+  title: string;
+  poster_path: string;
+  vote_average: number;
+}
+interface MovieSliderProps {
+  title: string;
+  movies: Movies[];
+}
+interface MovieCategory {
+  id:number
 
+}
 function Home() {
   const [popular, setPopular] = useState([]);
   const [trending, setTrending] = useState([]);
   const [topraited, setTopRaited] = useState([]);
 
-  const [search, setSearch] = useState([]);
+  const [search, setSearch] = useState<Movies[]>([]);
   const [query, setQuery] = useState("");
 
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [movieCategory, setMovieCategory] = useState([]);
+  const [movieCategory, setMovieCategory] = useState<Movies[]>([]);
 
   const [loading, setLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
@@ -94,7 +111,7 @@ function Home() {
     getCategories();
   }, []);
 
-  async function handleSelectbox(e) {
+  async function handleSelectbox(e: any) {
     const categoryId = e.target.value;
 
     if (categoryId === "default") {
@@ -108,7 +125,7 @@ function Home() {
     setSelectedCategory(categoryId);
   }
 
-  const MovieSlider = ({ title, movies }) => {
+  const MovieSlider = ({ title, movies }: MovieSliderProps) => {
     // console.log(position);
 
     return (
@@ -158,7 +175,9 @@ function Home() {
                 size={35}
                 className="text-red-700 sm:w-[50px] sm:h-[50px]"
               />
-              <span className="text-sm md:text-3xl w-20 md:w-40" >Movie Site</span>
+              <span className="text-sm md:text-3xl w-20 md:w-40">
+                Movie Site
+              </span>
             </h1>
           </Link>
 
@@ -340,7 +359,7 @@ function Home() {
 
       <section className="relative h-[500px] sm:h-[550px] md:h-[600px] overflow-hidden rounded-xl w-full md:w-[90%] flex mx-auto mt-5">
         <img
-          src={ShutterIdalnd}
+          src="shutteriland.jpg"
           alt="Shutter Island"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />

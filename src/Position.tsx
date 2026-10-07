@@ -1,14 +1,23 @@
 import { useState, useEffect } from "react";
-import { getPopularMovies, getTrendingMovies, getTopRatedMovies } from "./Components/MovieAPI.js";
+import {
+  getPopularMovies,
+  getTrendingMovies,
+  getTopRatedMovies,
+} from "./Components/MovieAPI.js";
 import { useParams, Link } from "react-router-dom";
 import MovieCard from "./Components/MovieCard.js";
 import BackButton from "./Components/ButtonBack.js";
-
+interface Movie {
+  id: number;
+  title: string;
+  poster_path: string;
+  vote_average: number;
+}
 function Position() {
   const { position } = useParams();
-  const [popular, setPopular] = useState([]);
-  const [trending, setTrending] = useState([]);
-  const [topraited, setTopRaited] = useState([]);
+  const [popular, setPopular] = useState<Movie[]>([]);
+  const [trending, setTrending] = useState<Movie[]>([]);
+  const [topraited, setTopRaited] = useState<Movie[]>([]);
 
   async function getApi() {
     if (position === "popular") {

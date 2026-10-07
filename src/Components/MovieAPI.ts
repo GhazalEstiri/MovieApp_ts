@@ -6,7 +6,6 @@ export async function getPopularMovies() {
   const data = await response.json();
   return data.results;
 }
-
 export async function getTrendingMovies() {
   const response = await fetch(
     `${BASE_URL}/trending/movie/week?api_key=${API_KEY}`,
